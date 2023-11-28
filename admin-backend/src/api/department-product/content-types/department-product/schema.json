@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "departments",
+  "info": {
+    "singularName": "department-product",
+    "pluralName": "departments",
+    "displayName": "Departments"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "text"
+    },
+    "Show": {
+      "type": "boolean"
+    },
+    "Quantity": {
+      "type": "biginteger"
+    },
+    "title": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::products-list.products-list",
+      "mappedBy": "tags"
+    }
+  }
+}
