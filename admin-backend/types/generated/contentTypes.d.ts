@@ -619,6 +619,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     lastname: Attribute.String;
     birthday: Attribute.Date;
     user_id: Attribute.UID<'plugin::users-permissions.user', 'username'>;
+    address: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -847,6 +848,37 @@ export interface ApiShoppingCartShoppingCart extends Schema.CollectionType {
   };
 }
 
+export interface ApiStoreProductStoreProduct extends Schema.CollectionType {
+  collectionName: 'stores';
+  info: {
+    singularName: 'store-product';
+    pluralName: 'stores';
+    displayName: 'Store';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.Text;
+    address: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::store-product.store-product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::store-product.store-product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -867,6 +899,7 @@ declare module '@strapi/types' {
       'api::department-product.department-product': ApiDepartmentProductDepartmentProduct;
       'api::products-list.products-list': ApiProductsListProductsList;
       'api::shopping-cart.shopping-cart': ApiShoppingCartShoppingCart;
+      'api::store-product.store-product': ApiStoreProductStoreProduct;
     }
   }
 }
