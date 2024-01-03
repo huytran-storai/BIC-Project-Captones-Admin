@@ -80,6 +80,18 @@
     },
     "address": {
       "type": "text"
+    },
+    "shopping_carts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::shopping-cart.shopping-cart",
+      "mappedBy": "user"
+    },
+    "checkout": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::checkout.checkout",
+      "inversedBy": "user"
     }
   }
 }
