@@ -50,6 +50,18 @@
       "relation": "manyToOne",
       "target": "api::shopping-cart-item.shopping-cart-item",
       "inversedBy": "products"
+    },
+    "Product_Id": {
+      "type": "string"
+    },
+    "productQuantityAddDefault": {
+      "type": "integer"
+    },
+    "taste": {
+      "type": "string"
+    },
+    "drink_type": {
+      "type": "string"
     }
   }
 }

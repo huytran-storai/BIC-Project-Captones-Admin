@@ -881,6 +881,10 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToOne',
       'api::shopping-cart-item.shopping-cart-item'
     >;
+    Product_Id: Attribute.String;
+    productQuantityAddDefault: Attribute.Integer;
+    taste: Attribute.String;
+    drink_type: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -918,6 +922,8 @@ export interface ApiProductCategoryProductCategory
       'oneToMany',
       'api::product.product'
     >;
+    imageUrlTag: Attribute.String;
+    drink_type: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -20,6 +20,12 @@
       "relation": "oneToMany",
       "target": "api::product.product",
       "mappedBy": "product_category"
+    },
+    "imageUrlTag": {
+      "type": "string"
+    },
+    "drink_type": {
+      "type": "string"
     }
   }
 }
