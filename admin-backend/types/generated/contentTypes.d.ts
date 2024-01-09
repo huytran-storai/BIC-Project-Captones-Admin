@@ -765,6 +765,16 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToOne',
       'api::checkout.checkout'
     >;
+    cart_items: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::cart-item.cart-item'
+    >;
+    cart_quantity: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'api::cart-quantity.cart-quantity'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -805,6 +815,90 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCartItemCartItem extends Schema.CollectionType {
+  collectionName: 'cart_items';
+  info: {
+    singularName: 'cart-item';
+    pluralName: 'cart-items';
+    displayName: 'Cart_Item';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Product_Price: Attribute.Integer;
+    Product_name: Attribute.Text;
+    products: Attribute.Relation<
+      'api::cart-item.cart-item',
+      'oneToMany',
+      'api::product.product'
+    >;
+    users_permissions_user: Attribute.Relation<
+      'api::cart-item.cart-item',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::cart-item.cart-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::cart-item.cart-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCartQuantityCartQuantity extends Schema.CollectionType {
+  collectionName: 'cart_quantities';
+  info: {
+    singularName: 'cart-quantity';
+    pluralName: 'cart-quantities';
+    displayName: 'Cart_Quantity';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Product_price: Attribute.Integer;
+    Product_name: Attribute.Text;
+    Quantity_Current: Attribute.Integer;
+    product: Attribute.Relation<
+      'api::cart-quantity.cart-quantity',
+      'oneToOne',
+      'api::product.product'
+    >;
+    users_permissions_user: Attribute.Relation<
+      'api::cart-quantity.cart-quantity',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::cart-quantity.cart-quantity',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::cart-quantity.cart-quantity',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -876,15 +970,21 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToOne',
       'api::product-category.product-category'
     >;
-    shopping_cart_item: Attribute.Relation<
-      'api::product.product',
-      'manyToOne',
-      'api::shopping-cart-item.shopping-cart-item'
-    >;
     Product_Id: Attribute.String;
     productQuantityAddDefault: Attribute.Integer;
     taste: Attribute.String;
     drink_type: Attribute.String;
+    cart_item: Attribute.Relation<
+      'api::product.product',
+      'manyToOne',
+      'api::cart-item.cart-item'
+    >;
+    cart_quantity: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'api::cart-quantity.cart-quantity'
+    >;
+    Brand: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -958,11 +1058,6 @@ export interface ApiShoppingCartShoppingCart extends Schema.CollectionType {
     Subtotal: Attribute.Decimal;
     Tax: Attribute.Decimal;
     Notes: Attribute.Text;
-    shopping_cart_item: Attribute.Relation<
-      'api::shopping-cart.shopping-cart',
-      'oneToOne',
-      'api::shopping-cart-item.shopping-cart-item'
-    >;
     user: Attribute.Relation<
       'api::shopping-cart.shopping-cart',
       'manyToOne',
@@ -991,47 +1086,6 @@ export interface ApiShoppingCartShoppingCart extends Schema.CollectionType {
   };
 }
 
-export interface ApiShoppingCartItemShoppingCartItem
-  extends Schema.CollectionType {
-  collectionName: 'shopping_cart_items';
-  info: {
-    singularName: 'shopping-cart-item';
-    pluralName: 'shopping-cart-items';
-    displayName: 'Shopping_Cart_Item';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Quantity: Attribute.Integer;
-    shopping_cart: Attribute.Relation<
-      'api::shopping-cart-item.shopping-cart-item',
-      'oneToOne',
-      'api::shopping-cart.shopping-cart'
-    >;
-    products: Attribute.Relation<
-      'api::shopping-cart-item.shopping-cart-item',
-      'oneToMany',
-      'api::product.product'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::shopping-cart-item.shopping-cart-item',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::shopping-cart-item.shopping-cart-item',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1051,11 +1105,12 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::blog.blog': ApiBlogBlog;
+      'api::cart-item.cart-item': ApiCartItemCartItem;
+      'api::cart-quantity.cart-quantity': ApiCartQuantityCartQuantity;
       'api::checkout.checkout': ApiCheckoutCheckout;
       'api::product.product': ApiProductProduct;
       'api::product-category.product-category': ApiProductCategoryProductCategory;
       'api::shopping-cart.shopping-cart': ApiShoppingCartShoppingCart;
-      'api::shopping-cart-item.shopping-cart-item': ApiShoppingCartItemShoppingCartItem;
     }
   }
 }

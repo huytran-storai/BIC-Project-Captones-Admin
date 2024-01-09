@@ -24,12 +24,6 @@
     "Notes": {
       "type": "text"
     },
-    "shopping_cart_item": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::shopping-cart-item.shopping-cart-item",
-      "inversedBy": "shopping_cart"
-    },
     "user": {
       "type": "relation",
       "relation": "manyToOne",

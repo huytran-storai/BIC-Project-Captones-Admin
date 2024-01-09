@@ -45,12 +45,6 @@
       "target": "api::product-category.product-category",
       "inversedBy": "products"
     },
-    "shopping_cart_item": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::shopping-cart-item.shopping-cart-item",
-      "inversedBy": "products"
-    },
     "Product_Id": {
       "type": "string"
     },
@@ -62,6 +56,21 @@
     },
     "drink_type": {
       "type": "string"
+    },
+    "cart_item": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::cart-item.cart-item",
+      "inversedBy": "products"
+    },
+    "cart_quantity": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cart-quantity.cart-quantity",
+      "mappedBy": "product"
+    },
+    "Brand": {
+      "type": "text"
     }
   }
 }

@@ -92,6 +92,18 @@
       "relation": "oneToOne",
       "target": "api::checkout.checkout",
       "inversedBy": "user"
+    },
+    "cart_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cart-item.cart-item",
+      "mappedBy": "users_permissions_user"
+    },
+    "cart_quantity": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cart-quantity.cart-quantity",
+      "mappedBy": "users_permissions_user"
     }
   }
 }
