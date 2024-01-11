@@ -12,20 +12,14 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Product_Category_Name": {
+    "DepartmentName": {
       "type": "text"
     },
-    "products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product.product",
-      "mappedBy": "product_category"
+    "DepartmentImage": {
+      "type": "text"
     },
-    "imageUrlTag": {
-      "type": "string"
-    },
-    "drink_type": {
-      "type": "string"
+    "DrinkType": {
+      "type": "text"
     }
   }
 }

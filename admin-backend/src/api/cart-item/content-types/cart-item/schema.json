@@ -12,23 +12,21 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Product_Price": {
-      "type": "integer"
+    "ProductPrice": {
+      "type": "float"
     },
-    "Product_name": {
+    "ProductName": {
       "type": "text"
-    },
-    "products": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::product.product",
-      "mappedBy": "cart_item"
     },
     "users_permissions_user": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "cart_items"
+    },
+    "QuantityDefault": {
+      "type": "integer",
+      "default": 1
     }
   }
 }

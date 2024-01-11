@@ -12,10 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Blog_Name": {
+    "BlogName": {
       "type": "text"
     },
-    "Blog_Image": {
+    "BlogImage": {
       "type": "text"
     },
     "Description": {
@@ -24,7 +24,7 @@
     "DateTime": {
       "type": "datetime"
     },
-    "Blog_Url": {
+    "BlogUrl": {
       "type": "text"
     }
   }

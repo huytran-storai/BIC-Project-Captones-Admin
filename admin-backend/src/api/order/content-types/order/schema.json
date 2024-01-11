@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "OrderId": {
+      "type": "text"
+    },
+    "MethodPayment": {
+      "type": "enumeration",
+      "enum": [
+        "PayAfter",
+        "PayBefore"
+      ],
+      "default": "PayBefore"
+    },
+    "AddressType": {
+      "type": "enumeration",
+      "enum": [
+        "PickUp",
+        "Delivery"
+      ],
+      "default": "PickUp"
+    },
+    "TotalPrice": {
+      "type": "float"
+    },
+    "DateTimePick": {
+      "type": "datetime"
+    },
+    "TotalQuantity": {
+      "type": "integer"
+    },
+    "NoteOrder": {
+      "type": "text"
+    },
+    "TaxOrder": {
+      "type": "float"
+    },
+    "Status": {
+      "type": "enumeration",
+      "enum": [
+        "Cancel",
+        "Processing",
+        "Complete"
+      ],
+      "default": "Processing"
+    }
+  }
+}
