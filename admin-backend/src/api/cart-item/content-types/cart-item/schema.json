@@ -27,6 +27,15 @@
     "QuantityDefault": {
       "type": "integer",
       "default": 1
+    },
+    "ProductImage": {
+      "type": "string"
+    },
+    "UserId": {
+      "type": "string"
+    },
+    "ProductId": {
+      "type": "integer"
     }
   }
 }

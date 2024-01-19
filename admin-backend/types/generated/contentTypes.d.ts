@@ -824,6 +824,9 @@ export interface ApiCartItemCartItem extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     QuantityDefault: Attribute.Integer & Attribute.DefaultTo<1>;
+    ProductImage: Attribute.String;
+    UserId: Attribute.String;
+    ProductId: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
