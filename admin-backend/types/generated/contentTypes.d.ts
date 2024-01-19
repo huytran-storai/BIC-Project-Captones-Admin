@@ -760,6 +760,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::cart-item.cart-item'
     >;
+    UserId: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -824,6 +825,9 @@ export interface ApiCartItemCartItem extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     QuantityDefault: Attribute.Integer & Attribute.DefaultTo<1>;
+    ProductImage: Attribute.String;
+    ProductId: Attribute.Integer;
+    UserId: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -910,6 +914,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     Brand: Attribute.Text;
     IsSale: Attribute.Enumeration<['No ', 'Yes']>;
     IngredientImg: Attribute.Media;
+    productQuantityAddDefault: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -962,6 +967,38 @@ export interface ApiProductCategoryProductCategory
   };
 }
 
+export interface ApiStoreStore extends Schema.CollectionType {
+  collectionName: 'stores';
+  info: {
+    singularName: 'store';
+    pluralName: 'stores';
+    displayName: 'Store';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    StoreName: Attribute.String;
+    StoreAddress: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::store.store',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::store.store',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -985,6 +1022,7 @@ declare module '@strapi/types' {
       'api::order.order': ApiOrderOrder;
       'api::product.product': ApiProductProduct;
       'api::product-category.product-category': ApiProductCategoryProductCategory;
+      'api::store.store': ApiStoreStore;
     }
   }
 }
