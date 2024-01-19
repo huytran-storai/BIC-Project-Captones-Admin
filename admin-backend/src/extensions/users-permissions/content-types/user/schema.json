@@ -86,6 +86,9 @@
       "relation": "oneToMany",
       "target": "api::cart-item.cart-item",
       "mappedBy": "users_permissions_user"
+    },
+    "UserId": {
+      "type": "integer"
     }
   }
 }

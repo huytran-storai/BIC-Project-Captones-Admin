@@ -760,6 +760,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::cart-item.cart-item'
     >;
+    UserId: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -825,8 +826,8 @@ export interface ApiCartItemCartItem extends Schema.CollectionType {
     >;
     QuantityDefault: Attribute.Integer & Attribute.DefaultTo<1>;
     ProductImage: Attribute.String;
-    UserId: Attribute.String;
     ProductId: Attribute.Integer;
+    UserId: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -913,6 +914,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     Brand: Attribute.Text;
     IsSale: Attribute.Enumeration<['No ', 'Yes']>;
     IngredientImg: Attribute.Media;
+    productQuantityAddDefault: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

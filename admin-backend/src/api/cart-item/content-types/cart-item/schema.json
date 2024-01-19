@@ -31,10 +31,10 @@
     "ProductImage": {
       "type": "string"
     },
-    "UserId": {
-      "type": "string"
-    },
     "ProductId": {
+      "type": "integer"
+    },
+    "UserId": {
       "type": "integer"
     }
   }
