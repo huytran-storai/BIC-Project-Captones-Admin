@@ -24,18 +24,18 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "cart_items"
     },
-    "QuantityDefault": {
+    "productQuantityAddDefault": {
       "type": "integer",
       "default": 1
     },
     "ProductImage": {
       "type": "string"
     },
-    "ProductId": {
-      "type": "integer"
-    },
     "UserId": {
       "type": "integer"
+    },
+    "ProductId": {
+      "type": "string"
     }
   }
 }

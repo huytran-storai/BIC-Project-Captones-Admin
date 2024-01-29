@@ -733,10 +733,10 @@ export interface ApiCartItemCartItem extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    QuantityDefault: Attribute.Integer & Attribute.DefaultTo<1>;
+    productQuantityAddDefault: Attribute.Integer & Attribute.DefaultTo<1>;
     ProductImage: Attribute.String;
-    ProductId: Attribute.Integer;
     UserId: Attribute.Integer;
+    ProductId: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -812,7 +812,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     ProductName: Attribute.Text;
     ProductImage: Attribute.Text;
     OldPrice: Attribute.Float;
-    CurrentPrice: Attribute.Decimal;
+    ProductPrice: Attribute.Decimal;
     UnitCapitity: Attribute.Decimal;
     UnitPrice: Attribute.Decimal;
     Upc: Attribute.Text;

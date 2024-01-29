@@ -21,7 +21,7 @@
     "OldPrice": {
       "type": "float"
     },
-    "CurrentPrice": {
+    "ProductPrice": {
       "type": "decimal"
     },
     "UnitCapitity": {
