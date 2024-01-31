@@ -18,26 +18,25 @@
     "MethodPayment": {
       "type": "enumeration",
       "enum": [
-        "PayAfter",
-        "PayBefore"
-      ],
-      "default": "PayBefore"
+        "Chuyển khoản trước",
+        "Thanh toán khi nhận hàng"
+      ]
     },
     "AddressType": {
       "type": "enumeration",
       "enum": [
-        "PickUp",
-        "Delivery"
+        "Giao hàng theo địa chỉ của bạn",
+        "Nhận tại của hàng chúng tôi"
       ],
-      "default": "PickUp"
+      "default": "Nhận tại của hàng chúng tôi"
     },
     "TotalPrice": {
       "type": "float"
     },
-    "DateTimePick": {
+    "DeliveryDate": {
       "type": "datetime"
     },
-    "TotalQuantity": {
+    "TotalItem": {
       "type": "integer"
     },
     "NoteOrder": {
@@ -54,6 +53,24 @@
         "Complete"
       ],
       "default": "Processing"
+    },
+    "FirstName": {
+      "type": "string"
+    },
+    "AddressCustomer": {
+      "type": "string"
+    },
+    "PhoneCustomer": {
+      "type": "biginteger"
+    },
+    "LastName": {
+      "type": "string"
+    },
+    "PromoApplied": {
+      "type": "string"
+    },
+    "OrderedProducts": {
+      "type": "richtext"
     }
   }
 }

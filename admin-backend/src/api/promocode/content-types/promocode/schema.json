@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "PromoId": {
+    "PromoCode": {
       "type": "text"
     },
     "PromoTitle": {

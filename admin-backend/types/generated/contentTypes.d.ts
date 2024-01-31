@@ -482,6 +482,97 @@ export interface PluginUploadFolder extends Schema.CollectionType {
   };
 }
 
+export interface PluginContentReleasesRelease extends Schema.CollectionType {
+  collectionName: 'strapi_releases';
+  info: {
+    singularName: 'release';
+    pluralName: 'releases';
+    displayName: 'Release';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    releasedAt: Attribute.DateTime;
+    actions: Attribute.Relation<
+      'plugin::content-releases.release',
+      'oneToMany',
+      'plugin::content-releases.release-action'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::content-releases.release',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::content-releases.release',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface PluginContentReleasesReleaseAction
+  extends Schema.CollectionType {
+  collectionName: 'strapi_release_actions';
+  info: {
+    singularName: 'release-action';
+    pluralName: 'release-actions';
+    displayName: 'Release Action';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    type: Attribute.Enumeration<['publish', 'unpublish']> & Attribute.Required;
+    entry: Attribute.Relation<
+      'plugin::content-releases.release-action',
+      'morphToOne'
+    >;
+    contentType: Attribute.String & Attribute.Required;
+    release: Attribute.Relation<
+      'plugin::content-releases.release-action',
+      'manyToOne',
+      'plugin::content-releases.release'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::content-releases.release-action',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::content-releases.release-action',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginI18NLocale extends Schema.CollectionType {
   collectionName: 'i18n_locale';
   info: {
@@ -768,17 +859,32 @@ export interface ApiOrderOrder extends Schema.CollectionType {
   };
   attributes: {
     OrderId: Attribute.Text;
-    MethodPayment: Attribute.Enumeration<['PayAfter', 'PayBefore']> &
-      Attribute.DefaultTo<'PayBefore'>;
-    AddressType: Attribute.Enumeration<['PickUp', 'Delivery']> &
-      Attribute.DefaultTo<'PickUp'>;
+    MethodPayment: Attribute.Enumeration<
+      [
+        'Chuy\u1EC3n kho\u1EA3n tr\u01B0\u1EDBc',
+        'Thanh to\u00E1n khi nh\u1EADn h\u00E0ng'
+      ]
+    >;
+    AddressType: Attribute.Enumeration<
+      [
+        'Giao h\u00E0ng theo \u0111\u1ECBa ch\u1EC9 c\u1EE7a b\u1EA1n',
+        'Nh\u1EADn t\u1EA1i c\u1EE7a h\u00E0ng ch\u00FAng t\u00F4i'
+      ]
+    > &
+      Attribute.DefaultTo<'Nh\u1EADn t\u1EA1i c\u1EE7a h\u00E0ng ch\u00FAng t\u00F4i'>;
     TotalPrice: Attribute.Float;
-    DateTimePick: Attribute.DateTime;
-    TotalQuantity: Attribute.Integer;
+    DeliveryDate: Attribute.DateTime;
+    TotalItem: Attribute.Integer;
     NoteOrder: Attribute.Text;
     TaxOrder: Attribute.Float;
     Status: Attribute.Enumeration<['Cancel', 'Processing', 'Complete']> &
       Attribute.DefaultTo<'Processing'>;
+    FirstName: Attribute.String;
+    AddressCustomer: Attribute.String;
+    PhoneCustomer: Attribute.BigInteger;
+    LastName: Attribute.String;
+    PromoApplied: Attribute.String;
+    OrderedProducts: Attribute.RichText;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -888,7 +994,7 @@ export interface ApiPromocodePromocode extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    PromoId: Attribute.Text;
+    PromoCode: Attribute.Text;
     PromoTitle: Attribute.Text;
     PromoImg: Attribute.Text;
     DiscountPromo: Attribute.Integer;
@@ -954,6 +1060,8 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
+      'plugin::content-releases.release': PluginContentReleasesRelease;
+      'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
