@@ -826,7 +826,7 @@ export interface ApiCartItemCartItem extends Schema.CollectionType {
     >;
     productQuantityAddDefault: Attribute.Integer & Attribute.DefaultTo<1>;
     ProductImage: Attribute.String;
-    UserId: Attribute.Integer;
+    OrderedUserId: Attribute.Integer;
     ProductId: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
