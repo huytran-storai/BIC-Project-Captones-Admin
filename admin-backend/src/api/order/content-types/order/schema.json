@@ -48,20 +48,17 @@
     "Status": {
       "type": "enumeration",
       "enum": [
-        "Cancel",
-        "Processing",
-        "Complete"
+        "Huỷ",
+        "Xử lý",
+        "Hoàn thành"
       ],
-      "default": "Processing"
+      "default": "Xử lý"
     },
     "FirstName": {
       "type": "string"
     },
     "AddressCustomer": {
       "type": "string"
-    },
-    "PhoneCustomer": {
-      "type": "biginteger"
     },
     "LastName": {
       "type": "string"
@@ -70,7 +67,13 @@
       "type": "string"
     },
     "OrderedProducts": {
-      "type": "richtext"
+      "type": "json"
+    },
+    "DeliveryFee": {
+      "type": "biginteger"
+    },
+    "PhoneCustomer": {
+      "type": "string"
     }
   }
 }

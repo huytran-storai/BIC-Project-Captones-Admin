@@ -760,7 +760,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::cart-item.cart-item'
     >;
-    UserId: Attribute.Integer;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -877,14 +876,17 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     TotalItem: Attribute.Integer;
     NoteOrder: Attribute.Text;
     TaxOrder: Attribute.Float;
-    Status: Attribute.Enumeration<['Cancel', 'Processing', 'Complete']> &
-      Attribute.DefaultTo<'Processing'>;
+    Status: Attribute.Enumeration<
+      ['Hu\u1EF7', 'X\u1EED l\u00FD', 'Ho\u00E0n th\u00E0nh']
+    > &
+      Attribute.DefaultTo<'X\u1EED l\u00FD'>;
     FirstName: Attribute.String;
     AddressCustomer: Attribute.String;
-    PhoneCustomer: Attribute.BigInteger;
     LastName: Attribute.String;
     PromoApplied: Attribute.String;
-    OrderedProducts: Attribute.RichText;
+    OrderedProducts: Attribute.JSON;
+    DeliveryFee: Attribute.BigInteger;
+    PhoneCustomer: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
