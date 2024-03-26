@@ -68,9 +68,6 @@
     "phone": {
       "type": "biginteger"
     },
-    "lastname": {
-      "type": "string"
-    },
     "birthday": {
       "type": "date"
     },
@@ -87,7 +84,7 @@
       "target": "api::cart-item.cart-item",
       "mappedBy": "users_permissions_user"
     },
-    "firstname": {
+    "name": {
       "type": "string"
     }
   }

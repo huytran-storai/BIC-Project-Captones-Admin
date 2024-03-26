@@ -751,7 +751,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.role'
     >;
     phone: Attribute.BigInteger;
-    lastname: Attribute.String;
     birthday: Attribute.Date;
     user_id: Attribute.UID<'plugin::users-permissions.user', 'username'>;
     address: Attribute.Text;
@@ -760,7 +759,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::cart-item.cart-item'
     >;
-    firstname: Attribute.String;
+    name: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
