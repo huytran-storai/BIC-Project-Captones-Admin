@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payment_managements",
+  "info": {
+    "singularName": "payment-management",
+    "pluralName": "payment-managements",
+    "displayName": "Payment_management",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "imgPayment": {
+      "type": "text"
+    },
+    "namePayment": {
+      "type": "string"
+    },
+    "cardId": {
+      "type": "string"
+    },
+    "cardDetail": {
+      "type": "string"
+    },
+    "paymentCode": {
+      "type": "string"
+    }
+  }
+}

@@ -905,6 +905,42 @@ export interface ApiOrderOrder extends Schema.CollectionType {
   };
 }
 
+export interface ApiPaymentManagementPaymentManagement
+  extends Schema.CollectionType {
+  collectionName: 'payment_managements';
+  info: {
+    singularName: 'payment-management';
+    pluralName: 'payment-managements';
+    displayName: 'Payment_management';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    imgPayment: Attribute.Text;
+    namePayment: Attribute.String;
+    cardId: Attribute.String;
+    cardDetail: Attribute.String;
+    paymentCode: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::payment-management.payment-management',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::payment-management.payment-management',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -1071,6 +1107,7 @@ declare module '@strapi/types' {
       'api::blog.blog': ApiBlogBlog;
       'api::cart-item.cart-item': ApiCartItemCartItem;
       'api::order.order': ApiOrderOrder;
+      'api::payment-management.payment-management': ApiPaymentManagementPaymentManagement;
       'api::product.product': ApiProductProduct;
       'api::product-category.product-category': ApiProductCategoryProductCategory;
       'api::promocode.promocode': ApiPromocodePromocode;
