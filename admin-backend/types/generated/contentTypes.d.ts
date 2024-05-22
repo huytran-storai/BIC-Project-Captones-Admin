@@ -897,16 +897,15 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     NoteOrder: Attribute.Text;
     TaxOrder: Attribute.Float;
     Status: Attribute.Enumeration<
-      ['Hu\u1EF7', 'X\u1EED l\u00FD', 'Ho\u00E0n th\u00E0nh']
+      ['Hu\u1EF7', '\u0110ang x\u1EED l\u00FD', 'Ho\u00E0n th\u00E0nh']
     > &
-      Attribute.DefaultTo<'X\u1EED l\u00FD'>;
-    FirstName: Attribute.String;
+      Attribute.DefaultTo<'\u0110ang x\u1EED l\u00FD'>;
     AddressCustomer: Attribute.String;
-    LastName: Attribute.String;
     PromoApplied: Attribute.String;
     OrderedProducts: Attribute.JSON;
     DeliveryFee: Attribute.BigInteger;
-    PhoneCustomer: Attribute.String;
+    phone: Attribute.String;
+    name: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
