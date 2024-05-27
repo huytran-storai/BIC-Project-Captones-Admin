@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "OrderId": {
-      "type": "text"
-    },
     "MethodPayment": {
       "type": "enumeration",
       "enum": [

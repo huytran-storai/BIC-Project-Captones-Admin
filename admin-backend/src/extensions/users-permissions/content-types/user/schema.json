@@ -68,18 +68,8 @@
     "birthday": {
       "type": "date"
     },
-    "user_id": {
-      "type": "uid",
-      "targetField": "username"
-    },
     "address": {
       "type": "text"
-    },
-    "cart_items": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::cart-item.cart-item",
-      "mappedBy": "users_permissions_user"
     },
     "name": {
       "type": "string"

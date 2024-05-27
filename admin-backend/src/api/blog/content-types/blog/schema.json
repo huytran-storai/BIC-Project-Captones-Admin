@@ -21,9 +21,6 @@
     "Description": {
       "type": "text"
     },
-    "DateTime": {
-      "type": "datetime"
-    },
     "BlogUrl": {
       "type": "text"
     }

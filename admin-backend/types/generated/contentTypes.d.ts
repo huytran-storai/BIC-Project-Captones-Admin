@@ -724,13 +724,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.role'
     >;
     birthday: Attribute.Date;
-    user_id: Attribute.UID<'plugin::users-permissions.user', 'username'>;
     address: Attribute.Text;
-    cart_items: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToMany',
-      'api::cart-item.cart-item'
-    >;
     name: Attribute.String;
     phone: Attribute.String;
     createdAt: Attribute.DateTime;
@@ -812,7 +806,6 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     BlogName: Attribute.Text;
     BlogImage: Attribute.Text;
     Description: Attribute.Text;
-    DateTime: Attribute.DateTime;
     BlogUrl: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -838,11 +831,6 @@ export interface ApiCartItemCartItem extends Schema.CollectionType {
   attributes: {
     ProductPrice: Attribute.Float;
     ProductName: Attribute.Text;
-    users_permissions_user: Attribute.Relation<
-      'api::cart-item.cart-item',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
     productQuantityAddDefault: Attribute.Integer & Attribute.DefaultTo<1>;
     ProductImage: Attribute.String;
     OrderedUserId: Attribute.Integer;
@@ -877,7 +865,6 @@ export interface ApiOrderOrder extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    OrderId: Attribute.Text;
     MethodPayment: Attribute.Enumeration<
       [
         'Chuy\u1EC3n kho\u1EA3n tr\u01B0\u1EDBc',
@@ -939,7 +926,6 @@ export interface ApiPaymentManagementPaymentManagement
   attributes: {
     imgPayment: Attribute.Text;
     namePayment: Attribute.String;
-    cardId: Attribute.String;
     cardDetail: Attribute.String;
     paymentCode: Attribute.String;
     createdAt: Attribute.DateTime;
